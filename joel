@@ -57,6 +57,9 @@ fancy_echo "Installing VLC ..."
 
 ### end common-components/gui-apps
 
+fancy_echo "Installing ssh-forever ..."
+  gem install ssh-forever
+
 fancy_echo "Installing git_remote_branch ..."
   gem install git_remote_branch
 
