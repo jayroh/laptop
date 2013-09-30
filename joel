@@ -1,0 +1,71 @@
+#!/usr/bin/env zsh
+### end common-components/zsh-shebang
+
+# Welcome to the thoughtbot laptop script! Be prepared to turn your laptop (or
+# desktop, no haters here) into an awesome development machine.
+
+# This file is auto-generated. Do not edit it by hand unless you know what
+# you're doing. Please see 'CONTRIBUTING.md' for more information.
+### end common-components/header
+
+trap 'ret=$?; test $ret -ne 0 && printf "failed\n\n" >&2; exit $ret' EXIT
+
+set -e
+### end common-components/exit-trap
+
+fancy_echo() {
+  echo "\n$1"
+}
+### end common-components/shared-functions
+
+fancy_echo "Installing Homebrew Cask, further homebrew packages for GUI apps ..."
+  brew tap phinze/homebrew-cask
+  brew install brew-cask
+
+fancy_echo "Installing Adium ..."
+  brew cask install adium
+fancy_echo "Installing Dropbox ..."
+  brew cask install dropbox
+fancy_echo "Installing Firefox ..."
+  brew cask install firefox
+fancy_echo "Installing ImageOptim ..."
+  brew cask install imageoptim
+fancy_echo "Installing Google Chrome ..."
+  brew cask install google-chrome
+fancy_echo "Installing iTerm2 ..."
+  brew cask install iterm2
+fancy_echo "Installing Mou ..."
+  brew cask install mou
+fancy_echo "Installing 1Password ..."
+  brew cask install one-password
+fancy_echo "Installing Postgres.app ..."
+  brew cask install postgres
+fancy_echo "Installing Rdio ..."
+  brew cask install rdio
+fancy_echo "Installing Sizeup..."
+  brew cask install size-up
+fancy_echo "Installing Skitch ..."
+  brew cask install skitch
+fancy_echo "Installing Team Viewer..."
+  brew cask install team-viewer
+fancy_echo "Installing Transmission ..."
+  brew cask install transmission
+fancy_echo "Installing Transmit..."
+  brew cask install transmit
+fancy_echo "Installing VLC ..."
+  brew cask install vlc
+
+### end common-components/gui-apps
+
+fancy_echo "Installing git_remote_branch ..."
+  gem install git_remote_branch
+
+fancy_echo "Installing autojump ..."
+  brew install autojump
+
+fancy_echo "Installing Oh-My-ZSH ..."
+  curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+
+fancy_echo "Installing RCM ... for rc file management"
+  brew tap mike-burns/rcm
+  brew install rcm
