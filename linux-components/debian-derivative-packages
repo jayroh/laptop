@@ -6,12 +6,19 @@ fancy_echo "Installing base ruby build dependencies ..."
 
 fancy_echo "Installing libraries for common gem dependencies ..."
   sudo aptitude install -y libxslt1-dev libcurl4-openssl-dev libksba8 libksba-dev libqtwebkit-dev libreadline-dev
+  sudo aptitude install -y wget
 
 fancy_echo "Installing sqlite3, for prototyping database-backed rails apps"
  sudo aptitude install -y libsqlite3-dev sqlite3
 
 fancy_echo "Installing Postgres, a good open source relational database ..."
-  sudo aptitude install -y postgresql postgresql-server-dev-all
+  sudo sh -c "echo 'deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main' > /etc/apt/sources.list.d/pgdg.list"
+  wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
+  sudo aptitude update
+  sudo aptitude install -y postgresql-common postgresql-9.3 libpq-dev
+
+fancy_echo "Creating a vagrant Postgres user ..."
+  sudo -u postgres createuser -w -s vagrant
 
 fancy_echo "Installing Redis, a good key-value database ..."
   sudo aptitude install -y redis-server
@@ -20,7 +27,7 @@ fancy_echo "Installing ctags, to index files for vim tab completion of methods, 
   sudo aptitude install -y exuberant-ctags
 
 fancy_echo "Installing vim ..."
-  sudo aptitude install -y vim-gtk
+  sudo aptitude install -y vim
 
 fancy_echo "Installing tmux, to save project state and switch between projects ..."
   sudo aptitude install -y tmux
